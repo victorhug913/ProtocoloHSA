@@ -1,0 +1,52 @@
+<html>
+<head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body class="teal lighten-5">
+    <center>
+        <h1 style="font-size: 30px" id="pergunta">O paciente apresenta Dellirium tremens (Agitação, confusão mental, pressão arterial elevada, febre e alucinações) ou convulsões?</h1>
+        <br/>
+        <div id="botoes">
+        <div class="btn waves-effect waves-light btn-large" id="sim">Sim</div>
+        <div class="btn waves-effect waves-light red accent-2 btn-large" id="nao" onClick="engole()">Não</div>
+        </div>
+    </center>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        iv = function(){
+            document.getElementById("pergunta").innerHTML = "Administrar Diazepam 10mg IV e repetir a cada 5/10min S/N + Tiamina 200mg IV. O paciente melhorou?"
+            document.getElementById("sim").onclick = encerra;
+            document.getElementById("nao").onclick = vo;
+        };
+        engole = function(){
+            document.getElementById("pergunta").innerHTML = "O paciente consegue engolir?"
+            document.getElementById("nao").onclick = iv;
+            document.getElementById("sim").onclick = vo;
+        };
+        encerra = function(){
+            document.getElementById("pergunta").innerHTML = "Protocolo encerrado"
+            document.getElementById("botoes").innerHTML = "";
+        };
+        vo = function(){
+            document.getElementById("pergunta").innerHTML = "Diazepam VO 10mg 1/1h ou até sedação do paciente + Tiamina 300mg 1x/dia por 3 meses. Houve melhora do quadro?"
+            document.getElementById("nao").onclick = melhora;
+            document.getElementById("sim").onclick = semmelhora;
+        };
+        semmelhora = function(){
+            document.getElementById("pergunta").innerHTML = "Investigar complicações clínicas + Avaliar internação em leito psiquiátrico + Manutenção do regime de benzodiazepínicos."
+            document.getElementById("botoes").innerHTML = "";
+        };
+        melhora = function(){
+            document.getElementById("pergunta").innerHTML = "Diminuição da dose de benzodiazepínicos + Considerar alta e encaminhamento para o CAPS AD."
+            document.getElementById("botoes").innerHTML = "";
+        };
+        document.getElementById("sim").onclick = iv;
+    </script>
+</body>
+</html>
